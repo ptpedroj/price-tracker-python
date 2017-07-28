@@ -1,24 +1,24 @@
+from src.settings import PRICE_TRACKER_DB_NAME, PRICE_TRACKER_DB_URI
 import pymongo as pm
 
 class Database(object):
-    URI = "mongodb://127.0.0.1:27017"
     DB = None
 
 
     @classmethod
-    def initialize(cls, db_name = "price_tracker"):
-        client = pm.MongoClient(Database.URI)
+    def initialize(cls, db_uri = PRICE_TRACKER_DB_URI, db_name = PRICE_TRACKER_DB_NAME):
+        client = pm.MongoClient(db_uri)
         cls.DB = client[db_name]
 
 
     @classmethod
-    def insert(cls, collection, data, key = None):
+    def insert(cls, collection, data, query = None):
         if cls.DB is None:
             cls.initialize()
-        if key == None:
+        if query == None:
             return cls.DB[collection].insert_one(data)
         else:
-            return cls.DB[collection].replace_one(key, data, True)
+            return cls.DB[collection].replace_one(query, data, True)
 
 
     @classmethod

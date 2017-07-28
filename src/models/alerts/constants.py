@@ -1,8 +1,10 @@
+import src.settings as settings
+
 class AlertConstants(object):
     COLLECTION = "alerts"
 
-    MAIL_API_URL = "https://api.mailgun.net/v3/sandbox0b55f308610748d9ab430ba57841e50d.mailgun.org/messages"
-    MAIL_API_KEY = "key-53d2eb8cf9e2cb5a9505f603a6d1476c"
-    MAIL_FROM = "PJ Mailgun Sandbox <postmaster@sandbox0b55f308610748d9ab430ba57841e50d.mailgun.org>"
+    MAIL_API_URL = settings.MAIL_API_URL
+    MAIL_API_KEY = settings.MAIL_API_KEY
+    MAIL_FROM = settings.MAIL_FROM
 
     ALERT_AGE_MINUTES = 10

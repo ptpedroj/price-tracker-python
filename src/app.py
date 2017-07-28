@@ -2,7 +2,7 @@ from flask import Flask
 from src.common.database import Database
 
 app = Flask(__name__)
-app.config.from_object("src.config")
+app.config.from_object("src.settings")
 app.secret_key = "123"
 
 @app.before_first_request
